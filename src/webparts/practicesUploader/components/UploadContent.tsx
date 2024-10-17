@@ -110,14 +110,14 @@ const UploadContent = (props: any) => {
 
   const addSnippet = () => {
     // Check if any object in the snippet array has empty fields
-    // const hasEmptyFields = snippet.some(
-    //   (obj: any) => !obj.Language || !obj.fileExtension || !obj.code
-    // );
+    const hasEmptyFields = snippet.some(
+      (obj: any) => !obj.Language || !obj.fileExtension || !obj.code
+    );
   
-    // if (hasEmptyFields) {
-    //   console.log('Cannot add new snippet. Some fields are empty.');
-    //   return;
-    // }
+    if (hasEmptyFields) {
+      console.log('Cannot add new snippet. Some fields are empty.');
+      return;
+    }
   
     // If no empty fields, proceed to push the new object
     const newSnippet = {
