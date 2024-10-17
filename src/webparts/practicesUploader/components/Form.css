@@ -4,16 +4,73 @@ body {
     padding: 20px;
 }
 .form-container {
-    background-color: white;
+    /* background-color: white; */
+    /* padding: 20px; */
+    /* border-radius: 8px; */
+    /* max-width: 700px; */
+    /* margin: 0 auto; */
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    /* margin-top: 70px; */
+    /* max-height: 80vh; */
+    /* overflow-y: auto; */
+}
+
+.form-container .header .title {
+    font-size: 20px;
+    margin: 0;
+}
+
+.form-container .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #0078D4;
     padding: 20px;
-    border-radius: 8px;
-    max-width: 700px;
-    margin: 0 auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 70px; /* Adjust this value as needed */
-    max-height: 80vh; /* Limit the height of the form */
-    overflow-y: auto; /* Enable vertical scrolling */
-    padding: 20px; /* Optional: Add some padding for aesthetics */
+    color: #fff;
+    position: sticky;
+    top: 0px;
+}
+
+.form-container .footer {
+    border-top: 1px solid #e7e7e7;
+    padding: 14px 25px;
+    text-align: end;
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+}
+
+.form-container .footer .save-btn {
+    background-color: #50AE55;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.form-container .footer .cancel-btn {
+    background-color: #D8D8D8;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.form-container .knowledge-form {
+    padding: 25px;
+    font-weight: 500;
+}
+
+.form-container .knowledge-form input, .form-container .knowledge-form select, .form-container .knowledge-form textarea {
+    margin: 0 0 15px 0;
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+    font-weight: 500;
+}
+
+.form-container .knowledge-form label{
+    padding-bottom: 5px;
 }
 
    
@@ -35,4 +92,15 @@ input[type="submit"]:hover {
 }
 h2 {
     text-align: center;
+}
+
+.section-form input {
+    margin: 0 0 15px 0;
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+    font-weight: 500;
+}
+
+.section-form label{
+    padding-bottom: 5px;
 }

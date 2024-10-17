@@ -6,7 +6,7 @@ import { useState } from 'react';
 const DocumentViewer = (props: any) => {
   const [openmodal, setOpenModal] = useState<string>("");
 //   const [filePath, setFilePath] = useState<string>("");
- 
+  
 //   useEffect(() => {
 //     if (props?.data?.AttachmentFiles) {
 //         const slidesData = props.data.AttachmentFiles.map((item: any) => ({

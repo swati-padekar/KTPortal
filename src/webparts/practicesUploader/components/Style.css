@@ -77,21 +77,33 @@ nav {
     border-radius: 5px;
 }
 
+.primary-btn {
+    background-color: #fff !important;
+    color: #0078d4 !important;
+    font-weight: 600 !important;
+}
+
 
 
 
 /* PROJECT DETAILS CSS */
 .documen-section {
     display: flex;
+    padding: 20px;
     .side-nav {
-        min-height: 100vh;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-
+        min-height: calc(100vh - 90px);
+        /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); */
+        box-shadow: 5px 5px 20px 0px #BCBCBC40;
+        border-radius: 5px;
         .hed {
-            background-color: #E8E8E8;
-            padding: 10px 30px;
+            background-color: #0078D4;
+            padding: 10px 20px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            color: #fff;
         }
 
         .card {
@@ -215,15 +227,19 @@ nav {
     }
 
     .cards {
-        border: none;
-        border-radius: 0;
-        margin: 15px 0px !important;
-        background-color: #F9F9F9;
-        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        background-color: #fff;
+        border: 1px solid #F6F6F6;
+        box-shadow: 2px 2px 4px 0px #99999940;
+        border-radius: 5px;
+        margin: 15px 0 !important;
+        padding: 3px;
+        font-size: 16px;
 
         .cardbody {
             display: flex;
             background-color: #F0F0F0;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
             h4 {
                 font-size: 18px;
                 color: #0078D4;
@@ -234,6 +250,18 @@ nav {
                 width: 50px;
                 margin-top: 10px;
             }
+
+           
+        }
+
+        .view-btn {
+            border: none;
+            background: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .doc {
@@ -380,14 +408,15 @@ nav {
 }
 
 .main-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    perspective: 1000px;
+    /* position: absolute; */
+    /* top: 50%;
+    left: 50%; */
+    /* transform: translate(-50%, -50%);
+    perspective: 1000px; */
     overflow-y: auto;
-    overflow-x: hidden;
-    /* width: 100%; */
+    /* overflow-x: hidden; */
+    width: 100%;
+    padding-top: 70px !important;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: white;
@@ -399,14 +428,19 @@ nav {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    height: 550px;
-    position: relative;
-    width: 1350px;
+    height: calc(100vh - 90px);
+    /* position: relative; */
+    /* width: 1350px; */
 }
 
 .site-card {
     padding: 10px;
     border: none !important;
+}
+
+.site-card .cards-container {
+    height: calc(100vh - 450px);
+    overflow: auto;
 }
 
 .card-hed {
@@ -418,17 +452,34 @@ nav {
 .card-box {
     height: 130px;
     width: 200px;
+    min-width: 200px;
     background-color: #fff;
-    border: 1px solid #80808066;
-    box-shadow: 0 3px 3px rgb(0 0 0 / 5%), 0 6px 6px rgb(0 0 0 / 5%);
+    /* border: 1px solid #80808066; */
+    /* box-shadow: 0 3px 3px rgb(0 0 0 / 5%), 0 6px 6px rgb(0 0 0 / 5%); */
+    box-shadow: 2px 2px 20px 0px #AAAAAA40;
+    border-radius: 2px;
     display: flex;
     margin: 20px 10px;
 }
 
 .box {
-    padding: 50px 10px 10px 15px;
+    padding: 15px;
     width: 100%;
 }
+
+.box .logo-icon {
+    position: absolute;
+    bottom: 10px;
+    width: 40px;
+}
+
+.box .title {
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #0078d4;
+}
+
 .site-name{
     margin-bottom: 0;
     font-size: 16px;
@@ -559,3 +610,17 @@ input[type="Date"] {
     background-color: #F5F5F5;
 
   }
+
+.pointer {
+    cursor: pointer;
+}
+
+.sections-height {
+    height: calc(100vh - 210px);
+    overflow: auto;
+}
+
+.topics-height {
+    height: calc(100vh - 140px);
+    overflow: auto;
+}
