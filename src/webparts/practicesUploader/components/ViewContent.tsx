@@ -6,7 +6,7 @@ import * as moment from "moment";
 import DocumentViewer from "./DocumentViewer";
 
 const ViewContent = (props: any) => {
-  const [file, setViewerdata] = useState();
+  const [file, setViewerdata] = useState<any>();
   const [isOpen, setIsOpen] = useState(false);
   const [byFile, setByFile] = useState<string>("");
   const _sharePointServiceProxy: SharepointServiceProxy =
@@ -323,7 +323,7 @@ const ViewContent = (props: any) => {
         isOpen={isOpen}
         onDismiss={togglePanel}
         closeButtonAriaLabel="Close"
-        headerText="Appoinment Letter"
+        headerText={file?.Practices}
         styles={{ main: { width: "100%", maxWidth: "100%" } }}
       >
         <DocumentViewer

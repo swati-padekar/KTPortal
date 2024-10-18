@@ -624,3 +624,48 @@ input[type="Date"] {
     height: calc(100vh - 140px);
     overflow: auto;
 }
+
+.metadata-container {
+    .section {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .label {
+        font-size: 14px;
+        color: gray;
+    }
+    .note {
+        border: 1px solid #bebebe;
+        padding: 10px;
+        border-radius: 5px;
+        border-left: 4px solid #ffa500;
+    }
+    .code-snippet {
+      border: 1px solid #bebebe;
+      border-radius: 5px;
+      padding: 15px;
+      height: 550px;
+      overflow: auto;
+      .snippet-card {
+        border: 1px solid #f1f1f1;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 2px 2px 4px 0 #99999940;
+        margin: 15px 0;
+        .code {
+          height: 165px;
+          overflow: auto;
+          background: #f1f1f14f;
+          border-radius: 5px;
+          padding: 10px;
+          margin-top: 10px;
+          position: relative;
+          .copy-btn {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+          }
+        }
+      }
+    }
+}
