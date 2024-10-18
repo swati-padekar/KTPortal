@@ -309,7 +309,7 @@ export default class SharepointServiceProxy {
       var userProperties = await this.GetUserProperties();
       var userGroups = await this.web.siteUsers.getById(user.Id).groups.get();
       this.currentUser = {
-        Groups: userGroups.filter((a: any) => { return a.Title.includes("Performance_") }),
+        Groups: userGroups.filter((a: any) => { return a.Title.includes("KTLeads") }),
         User: user,
         UserProperties: userProperties
       };
