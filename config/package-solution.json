@@ -3,7 +3,7 @@
   "solution": {
     "name": "kt-portal-client-side-solution",
     "id": "cb071004-4515-4982-9594-348e849c4ca3",
-    "version": "2.0.0.0",
+    "version": "2.5.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

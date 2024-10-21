@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import * as _ from "lodash";
 import toast, { Toaster } from "react-hot-toast";
 
+
 const UploadContent = (props: any) => {
   const _sharePointServiceProxy: SharepointServiceProxy =
     new SharepointServiceProxy(props.context, props.webURL);
@@ -20,6 +21,8 @@ const UploadContent = (props: any) => {
       code: ''
     },
   ]);
+  console.log("snippet", snippet);
+
   const [formData, setFormData] = React.useState({
     Practices: "",
     Skills: "",
@@ -29,10 +32,11 @@ const UploadContent = (props: any) => {
     ShortDescription: "",
     Description: "",
     References: "",
-    Topic:"",
-    Notes:"",
-    KTVersion:"",
-    CodeSnippets:''
+    Topic: "",
+    Notes: "",
+    KTVersion: "",
+    CodeSnippets: [],
+   
   });
 
   useEffect(() => {
@@ -88,11 +92,15 @@ const UploadContent = (props: any) => {
         content: awardThumbnail,
       });
     }
+    const dataToSend = {
+      ...formData,
+      CodeSnippets: JSON.stringify(formData.CodeSnippets) // Convert to string if necessary
+    };
 
     try {
       await _sharePointServiceProxy.addItem(
         "Knowledge_Transfer",
-        formData,
+        dataToSend,
         files
       );
       toast.success('Knowledge Base Form added successfully!');
@@ -106,70 +114,88 @@ const UploadContent = (props: any) => {
         ShortDescription: "",
         Description: "",
         References: "",
-        Topic:"",
-        Notes:"",
-        KTVersion:"",
-        CodeSnippets:""
+        Topic: "",
+        Notes: "",
+        KTVersion: "",
+        CodeSnippets: [],
       });
     } catch (error) {
       console.error(error);
-      toast.success('An error occurred while adding the item.');     
+      toast.error('An error occurred while adding the item.');
     }
   };
 
-  console.log("formData", formData);
+
 
   const addSnippet = () => {
     // Check if any object in the snippet array has empty fields
     const hasEmptyFields = snippet.some(
       (obj: any) => !obj.Language || !obj.fileExtension || !obj.code
     );
-  
+
     if (hasEmptyFields) {
       console.log('Cannot add new snippet. Some fields are empty.');
       return;
     }
-  
+
     // If no empty fields, proceed to push the new object
     const newSnippet = {
       Language: '',
       fileExtension: '',
       code: ''
     };
-  
+
     setSnippet([...snippet, newSnippet]);
     console.log('New snippet added:', newSnippet);
   };
 
-  return (
-    <><Toaster
-      position="top-center" // Support top-left, top-center, top-right, bottom-left, bottom-center & bottom-right
-      reverseOrder={false} // Toasts spawn at top by default. Set to `true` if you want new Toasts at the end
-      toastOptions={{
-        style: {
-          margin: '40px',
-          background: '#363636',
-          color: '#fff',
-          zIndex: 1,
-        },
+  // swati code
+  const handleSnippetChange = (index: number, field: string, value: string) => {
+    const updatedSnippets = snippet.map((snip: any, i: any) => {
+      if (i === index) {
+        return { ...snip, [field]: value };
+      }
+      return snip;
+    });
+    setSnippet(updatedSnippets);
+    setFormData((prevState) => ({ ...prevState, CodeSnippets: updatedSnippets })); // Update CodeSnippets in formData
+  };
 
-        // Specific styles for success toasts
-        success: {
+
+
+
+
+  return (
+    <>
+      <Toaster
+        position="top-center" // Support top-left, top-center, top-right, bottom-left, bottom-center & bottom-right
+        reverseOrder={false} // Toasts spawn at top by default. Set to `true` if you want new Toasts at the end
+        toastOptions={{
           style: {
-            background: '#4caf50', // Green background for success
-            color: '#fff', // White text for success
+            margin: '40px',
+            background: '#363636',
+            color: '#fff',
+            zIndex: 1,
           },
-          duration: 3000,
-        },
-        // Specific styles for error toasts
-        error: {
-          style: {
-            background: '#f44336', // Red background for error
-            color: '#fff', // White text for error
+
+          // Specific styles for success toasts
+          success: {
+            style: {
+              background: '#4caf50', // Green background for success
+              color: '#fff', // White text for success
+            },
+            duration: 3000,
           },
-          duration: 3000,
-        },
-      }} /><form
+          // Specific styles for error toasts
+          error: {
+            style: {
+              background: '#f44336', // Red background for error
+              color: '#fff', // White text for error
+            },
+            duration: 3000,
+          },
+        }} />
+      <form
         className="form-container"
         encType="multipart/form-data"
         onSubmit={handleSubmit}
@@ -237,6 +263,16 @@ const UploadContent = (props: any) => {
             onChange={handleChange}
             defaultValue={formData.Topic} />
 
+          <label htmlFor="title">Short Description:</label>
+          <input
+            type="text"
+            id="ShortDescription"
+            name="ShortDescription"
+            placeholder="Enter the Topic"
+            required
+            onChange={handleChange}
+            defaultValue={formData.ShortDescription} />
+
           <label htmlFor="description">Description:</label>
           <textarea
             id="description"
@@ -259,6 +295,40 @@ const UploadContent = (props: any) => {
             value={formData.KTVersion} />
           <div>
             {snippet.map((itr: any, i: number) => (
+              <div key={i}>
+                <div>Code {i + 1}</div>
+                <div className="p-3 border rounded mb-2">
+                  <label htmlFor={`Language_${i}`}>Language:</label>
+                  <input
+                    type="text"
+                    id={`Language_${i}`}
+                    placeholder="Enter the Language"
+                    required
+                    value={itr.Language}
+                    onChange={(e) => handleSnippetChange(i, 'Language', e.target.value)}
+                  />
+                  <label htmlFor={`Extension_${i}`}>Filename with Extension:</label>
+                  <input
+                    type="text"
+                    id={`Extension_${i}`}
+                    placeholder="Enter the filename"
+                    required
+                    value={itr.fileExtension}
+                    onChange={(e) => handleSnippetChange(i, 'fileExtension', e.target.value)}
+                  />
+                  <label htmlFor={`Snippet_${i}`}>Code Snippet</label>
+                  <textarea
+                    id={`Snippet_${i}`}
+                    rows={3}
+                    placeholder="Paste your code snippet here"
+                    required
+                    value={itr.code}
+                    onChange={(e) => handleSnippetChange(i, 'code', e.target.value)}
+                  ></textarea>
+                </div>
+              </div>
+            ))}
+            {/* {snippet.map((itr: any, i: number) => (
               <>
                 <div>Code {i + 1}</div>
                 <div className="p-3 border rounded mb-2">
@@ -286,7 +356,7 @@ const UploadContent = (props: any) => {
                   ></textarea>
                 </div>
               </>
-            ))}
+            ))} */}
             <div className="text-end pt-2">
               <button type="button" onClick={addSnippet} className="btn btn-primary">Add New</button>
             </div>
@@ -301,6 +371,17 @@ const UploadContent = (props: any) => {
             required
             onChange={handleChange}
             defaultValue={formData.Notes}
+          ></textarea>
+
+          <label htmlFor="Notes">References:</label>
+          <textarea
+            id="References"
+            name="References"
+            rows={3}
+            placeholder="Add any additional References"
+            required
+            onChange={handleChange}
+            defaultValue={formData.References}
           ></textarea>
 
           <label htmlFor="attachments">Document/Attachments:</label>
