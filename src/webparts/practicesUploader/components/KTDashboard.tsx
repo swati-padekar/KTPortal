@@ -276,12 +276,17 @@ const KTDashboard = (props: any) => {
                                                         <span className="dept-name">
                                                             {practiceData[key].Practices}
                                                         </span>
+                                                        {leadaccess ? 
                                                         <img
                                                             onClick={() => saveSection(practiceData[key].Practices)}
                                                             className="ms-auto pointer"
                                                             width={24}
                                                             src="../../SiteAssets/Add.svg"
                                                             alt="Add" />
+                                                            :
+                                                            null
+                                                            }
+
                                                     </div>
                                                     <div className="card-body">
                                                         {practiceData[key].subPractices.map(
