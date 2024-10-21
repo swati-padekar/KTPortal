@@ -46,7 +46,7 @@ const ViewContent = (props: any) => {
 
         let allFiles = allData?.filter((ftr: any) =>
             byFileName !== ""
-                ? ftr?.Title?.toLowerCase()?.includes(byFileName)
+                ? ftr?.Topic?.toLowerCase()?.includes(byFileName)
                 : viewData
         );
         setViewData(allFiles);
