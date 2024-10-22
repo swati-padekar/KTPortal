@@ -8,6 +8,9 @@
     z-index: 11;
     background-color: #ffffff !important;
   }
+  .o365cs-base .ms-Icon--Settings:before {
+   display: none !important;
+}
   /* #workbenchCommandBar{
       display: none !important;
     } */

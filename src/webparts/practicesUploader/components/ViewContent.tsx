@@ -17,7 +17,7 @@ const ViewContent = (props: any) => {
     const [viewData, setViewData] = useState<any>();
     // const [practice, setPractice] = useState<any>();
     const [sections, setSections] = useState<any>();
-
+    const [activeIndex, setActiveIndex] = useState(null);
 
 
 
@@ -104,14 +104,15 @@ const ViewContent = (props: any) => {
                 orderedColumn: "Created",
 
             }, false);
-            const uniqueData = _.unionBy(sections, 'Skills');
+        const uniqueData = _.unionBy(sections, 'Skills');
         setSections(uniqueData)
 
     };
-function filtersectionTopic(section: any){
-    getPractices(section)   
+    function filtersectionTopic(section: any) {
+        getPractices(section)
+        setActiveIndex(section)
 
-}
+    }
 
 
     return (
@@ -119,7 +120,7 @@ function filtersectionTopic(section: any){
             <div className="col-xl-2 col-lg-3">
                 <div className="side-nav">
                     <div className="hed">
-                        {/* <img src="../../SiteAssets/tune.png" alt="site" width={30} /> */}
+
                         <h1 className="m-0">Menu</h1>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -136,16 +137,19 @@ function filtersectionTopic(section: any){
                         {/* {practice}- */}
                         <div className="card-body sections-height" id="style-3">
                             {sections?.map((itr: any, i: number) => (
-                                <div key={i} className="stacks">
-                                    <a onClick={()=> filtersectionTopic(itr?.Skills)}>
-                                        <p className="card-txt">{itr?.Skills}</p>
+                                <div key={i} className="stacks" style={{ background: activeIndex === itr?.Skills ? '#e4dddd' : 'white' }} >
+                                    <a onClick={() => filtersectionTopic(itr?.Skills)}>
+                                        <div className="card-txt pointer">
+                                            {/* <svg width="8" height="8" style={{ display: 'inline-block', marginRight: '8px' }}>
+                                                <circle cx="4" cy="4" r="4" fill="black" />
+                                            </svg> */}
+                                            {itr?.Skills}
+                                        </div>
                                     </a>
                                 </div>
                             ))}
-                        </div>
+                        </div>                     
                     </div>
-
-
                 </div>
             </div>
             <div className="col-xl-10 col-lg-9">
@@ -194,7 +198,7 @@ function filtersectionTopic(section: any){
                                             <div className="cardbody">
                                                 <div className="col-xl-2 col-lg-2">
                                                     <img
-                                                        src="../../SiteAssets/PdfFile.png"
+                                                        src="../../SiteAssets/knowledge-base.png"
                                                         alt="image"
                                                         className="pdf-icon"
                                                     />
@@ -204,14 +208,14 @@ function filtersectionTopic(section: any){
                                                     <div className="pdf-row">
                                                         <div className="col-xl-5 col-lg-5 row1">
                                                             <img
-                                                                src="../../SiteAssets/person.png"
+                                                                src="../SiteAssets/person.png"
                                                                 alt="image"
                                                             />
                                                             <span>{itr?.Author?.Title}</span>
                                                         </div>
                                                         <div className="col-xl-5 col-lg-5 row1">
                                                             <img
-                                                                src="../../SiteAssets/calendar_month.png"
+                                                                src="../SiteAssets/calendar_month.png"
                                                                 alt="image"
                                                             />
                                                             <span className="text-nowrap">
@@ -224,22 +228,24 @@ function filtersectionTopic(section: any){
                                         </div>
                                         <div className="col-3 py-1">
                                             <div className="d-flex pb-2">
-                                                <span className="txt-color">Section</span>
-                                                <span className="bold-text">:{itr?.Skills}</span>
+                                                <span className="bold-text">Section:</span>
+                                                {/* txt-color */}
+                                                <span className="px-2">{itr?.Skills}</span>
+                                                {/* bold-text */}
                                             </div>
                                             <div className="d-flex pt-2">
-                                                <span className="txt-color">Topic</span>
-                                                <span className="bold-text">:{itr?.Topic}</span>
+                                                <span className="bold-text">Topic:</span>
+                                                <span className="px-2">{itr?.Topic}</span>
                                             </div>
                                         </div>
                                         <div className="col-5 py-1">
                                             <div className="d-flex pb-2">
-                                                <span className="txt-color">Version</span>
-                                                <span className="bold-text">:{itr?.KTVersion}</span>
+                                                <span className="bold-text">Version:</span>
+                                                <span className=" px-2">{itr?.KTVersion}</span>
                                             </div>
                                             <div className="d-flex pt-2">
-                                                <span className="txt-color">Description</span>
-                                                <span className="bold-text text-truncate"> :{itr?.ShortDescription} </span>
+                                                <span className="bold-text">Description:</span>
+                                                <span className="text-truncate px-2">{itr?.ShortDescription} </span>
                                             </div>
                                         </div>
                                         <div className="col-1 d-flex align-items-center justify-content-end">
@@ -286,7 +292,7 @@ function filtersectionTopic(section: any){
                                                 <div className="colwid6">
                                                     <span className="txt-color">
                                                         <img
-                                                            src="../../SiteAssets/visibility.png"
+                                                            src="../SiteAssets/visibility.png"
                                                             width={18}
                                                             onClick={() => togglePanel(itr)}
                                                         />

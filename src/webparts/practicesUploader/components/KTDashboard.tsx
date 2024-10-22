@@ -200,7 +200,7 @@ const KTDashboard = (props: any) => {
         </div>
             <div
                 className="dash-back"
-                style={{ backgroundImage: `url(../../SiteAssets/dash-bg.png)` }}
+                style={{ backgroundImage: `url(../SiteAssets/dash-bg.png)` }}
             >
                 <div className="main-container">
                     <div className="card-container">
@@ -209,7 +209,7 @@ const KTDashboard = (props: any) => {
                                 <h5 className="m-0">Practices</h5>
                                 { leadaccess ?
                                 <button onClick={showPopup} className="btn primary-btn">
-                                    <img width={24} src="../../SiteAssets/Add.svg" alt="Add" />
+                                    <img width={24} src="../SiteAssets/Add.svg" alt="Add" />
                                     Create Knowledge Base
                                 </button>
                                 :
@@ -247,13 +247,13 @@ const KTDashboard = (props: any) => {
                                             <div className="d-flex justify-content-between align-items-center">
                                                 <a className="title">{itr?.Practices}</a>
                                                 <img
-                                                    src="../../SiteAssets/arrow_forward.png"
+                                                    src="../SiteAssets/arrow_forward.png"
                                                     alt="site"
                                                     width={25} />
                                             </div>
                                             <img
                                                 className="logo-icon"
-                                                src="../../SiteAssets/demosite.png"
+                                                src="../SiteAssets/demosite.png"
                                                 alt="site" />
                                         </div>
                                     </a>
@@ -261,7 +261,7 @@ const KTDashboard = (props: any) => {
                             </div>
                         </div>
                         <div className="card site-card p-3">
-                            <h5 className="card-header card-hed rounded">Articles</h5>
+                            <h5 className="card-header card-hed rounded">Sections</h5>
                             <div className="container-fluid cards-container">
                                 <div className="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
                                     {practiceData &&
@@ -270,7 +270,7 @@ const KTDashboard = (props: any) => {
                                                 <div className="card border-light mb-3 mt-1">
                                                     <div className="card-header dept-card_hed">
                                                         <img
-                                                            src="../../SiteAssets/demosite.png"
+                                                            src="../SiteAssets/demosite.png"
                                                             alt="site"
                                                             width={24} />
                                                         <span className="dept-name">
@@ -281,7 +281,7 @@ const KTDashboard = (props: any) => {
                                                             onClick={() => saveSection(practiceData[key].Practices)}
                                                             className="ms-auto pointer"
                                                             width={24}
-                                                            src="../../SiteAssets/Add.svg"
+                                                            src="../SiteAssets/Add.svg"
                                                             alt="Add" />
                                                             :
                                                             null
@@ -296,7 +296,7 @@ const KTDashboard = (props: any) => {
                                                                     key={subIndex}
                                                                 >
                                                                     <img
-                                                                        src="../../SiteAssets/create_new_folder.png"
+                                                                        src="../SiteAssets/create_new_folder.png"
                                                                         alt="site"
                                                                         width={24} />
                                                                     {/* <a href={`#DocumentList/${itr?.Title}`} onClick={() => localstorage(itr)}>{itr?.Title} */}
