@@ -150,6 +150,7 @@ const KTDashboard = (props: any) => {
             try {
                 await _sharePointServiceProxy.addItem("KT_Practices", obj, []);
                 toast.success('Section added successfully!');
+                setSectionName('');
     
             } catch (error) {
                 console.error("Error adding section:", error);
@@ -241,7 +242,8 @@ const KTDashboard = (props: any) => {
                                     <a
                                         className="card-box text-decoration-none"
                                         key={index}
-                                        href={`#ViewContent/${0}`}
+                                        // href={`#ViewContent/${0}`}
+                                        href={`#`}
                                     >
                                         <div className="box position-relative">
                                             <div className="d-flex justify-content-between align-items-center">

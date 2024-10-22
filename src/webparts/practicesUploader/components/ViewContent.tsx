@@ -16,8 +16,9 @@ const ViewContent = (props: any) => {
     const [allData, setViewDataResult] = useState<any>();
     const [viewData, setViewData] = useState<any>();
     // const [practice, setPractice] = useState<any>();
-    const [sections, setSections] = useState<any>();
-    const [activeIndex, setActiveIndex] = useState(null);
+    const [sections, setSections] = useState<any>();    
+    // const [bydefault, setbydefaultselected] = useState('');
+    const [activeIndex, setActiveIndex] = useState('');
 
 
 
@@ -57,6 +58,8 @@ const ViewContent = (props: any) => {
         const skillsId = skills.slice(skills.lastIndexOf("/") + 1);
         const cleanedSkillsId = skillsId.replace(/%20/g, " ").trim();
         getPractices(cleanedSkillsId);
+        setActiveIndex(cleanedSkillsId)
+        // setbydefaultselected(cleanedSkillsId)
     }, []);
 
     const getPractices = async (item: any) => {
@@ -198,7 +201,7 @@ const ViewContent = (props: any) => {
                                             <div className="cardbody">
                                                 <div className="col-xl-2 col-lg-2">
                                                     <img
-                                                        src="../../SiteAssets/knowledge-base.png"
+                                                        src="../SiteAssets/knowledge-base.png"
                                                         alt="image"
                                                         className="pdf-icon"
                                                     />
