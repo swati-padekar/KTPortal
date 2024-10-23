@@ -83,3 +83,6 @@
     [dir=ltr] .j_b_8474018e {
         border: none !important;
     }
+    #topLevelRegion{
+      display: none !important;
+    }
